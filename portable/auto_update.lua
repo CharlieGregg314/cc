@@ -29,8 +29,8 @@ function update()
   return #files
 end
 
-local at_version = fs.open("version").readAll()
-local new_version = get_git("version")
+local at_version = fs.open("version.lua", "r").readAll()
+local new_version = get_git("version.lua")
 if at_version ~= new_version then
   print("updating from version: "..at_version)
   local files = update()
