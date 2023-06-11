@@ -1,0 +1,10 @@
+{
+    "Lua.diagnostics.disable": [
+        "undefined-field",
+        "lowercase-global"
+    ],
+    "Lua.diagnostics.globals": [
+        "http",
+        "fs"
+    ]
+}
