@@ -1,1 +1,1 @@
-require("update").update()
+require("update").force_update()

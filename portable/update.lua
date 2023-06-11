@@ -1,4 +1,5 @@
-function get_git(path)
+local update = {}
+function update.get_git(path)
     return http.get("https://raw.githubusercontent.com/CharlieGregg314/cc/master/portable/" .. path,
         { ["Cache-Control"] = "no-cache" }).readAll()
 end
@@ -14,8 +15,8 @@ function split(value, sep)
     return t
 end
 
-function update()
-    local files = split(get_git("file_list"), "\n")
+function update.force_update()
+    local files = split(update.get_git("file_list"), "\n")
     for i, path in pairs(files) do
         local dir = string.match(path, ".+(?=/)")
         -- local file = string.match(path, "[^/]+$")
@@ -23,8 +24,20 @@ function update()
             fs.makeDir(dir)
         end
         f = fs.open(path, "w")
-        f.write(get_git(path))
+        f.write(update.get_git(path))
         f.close()
     end
     return #files
 end
+function update.check_for_update() 
+    local at_version = fs.open("version.lua", "r").readAll()
+    local new_version = update.get_git("version.lua")
+    if at_version ~= new_version then
+    print("updating from "..at_version)
+    local files = update.force_update()
+    print("updated to "..new_version..", "..tostring(files).." files downloaded.")
+    else
+    print("up to date at "..at_version)
+    end
+end
+return update
