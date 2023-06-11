@@ -1,6 +1,6 @@
 local update = {}
 function update.get_git(path)
-    return http.get("https://raw.githubusercontent.com/CharlieGregg314/cc/master/portable/" .. path,
+    return http.get("https://raw.githubusercontent.com/CharlieGregg314/cc/master/portable/"..path.."?c="..tostring(math.random(0, 0xFFFF)),
         { ["Cache-Control"] = "no-cache" }).readAll()
 end
 

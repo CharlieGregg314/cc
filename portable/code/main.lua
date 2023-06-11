@@ -1,1 +1,1 @@
-require("code.updater.auto_update")
+require("updater.auto_update")
