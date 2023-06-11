@@ -1,4 +1,3 @@
-
 function get_git(path)
   return http.get("https://raw.githubusercontent.com/CharlieGregg314/cc/master/portable/"..path).readAll()
 end
@@ -16,10 +15,10 @@ end
 
 function update()
   local files = split(get_git("file_list"), "\n")
-  for path in files do
+  for i, path in pairs(files) do
     local dir = string.match(path, ".+(?=/)")
     -- local file = string.match(path, "[^/]+$")
-    if not fs.exists(dir) then
+    if dir ~= nil and not fs.exists(dir) then
       fs.makeDir(dir)
     end
     f = fs.open(path, "w")
