@@ -1,1 +1,0 @@
-require("update").force_update()

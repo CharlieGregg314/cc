@@ -16,6 +16,7 @@ function split(value, sep)
 end
 
 function update.force_update()
+    fs.delete("/code")
     local files = split(update.get_git("file_list"), "\n")
     for i, path in pairs(files) do
         local dir = string.match(path, ".+(?=/)")
