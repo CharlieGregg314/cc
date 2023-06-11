@@ -1,5 +1,5 @@
 function get_git(path)
-  return http.get("https://raw.githubusercontent.com/CharlieGregg314/cc/master/portable/"..path).readAll()
+  return http.get("https://raw.githubusercontent.com/CharlieGregg314/cc/master/portable/"..path, {["Cache-Control"]="private"}).readAll()
 end
 
 function split(value, sep)
