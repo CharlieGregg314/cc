@@ -1,5 +1,5 @@
 function get_git(path)
-  return http.get("https://raw.githubusercontent.com/CharlieGregg314/cc/master/portable/"..path, {["Cache-Control"]="private"}).readAll()
+  return http.get("https://raw.githubusercontent.com/CharlieGregg314/cc/master/portable/"..path, {["Cache-Control"]="no-cache"}).readAll()
 end
 
 function split(value, sep)
@@ -31,7 +31,9 @@ end
 local at_version = fs.open("version.lua", "r").readAll()
 local new_version = get_git("version.lua")
 if at_version ~= new_version then
-  print("updating from version: "..at_version)
+  print("updating from "..at_version)
   local files = update()
-  print("updated to version: "..new_version..", "..tostring(files).." files downloaded.")
+  print("updated to "..new_version..", "..tostring(files).." files downloaded.")
+else
+  print("up to date at "..at_version)
 end
