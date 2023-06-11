@@ -1,3 +1,5 @@
 version.lua
 main.lua
 auto_update.lua
+update.lua
+force_update.lua
