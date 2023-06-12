@@ -2,4 +2,5 @@ code/main.lua
 code/updater/auto_update.lua
 code/updater/update.lua
 code/force_update.lua
+code/connect.lua
 version.lua
