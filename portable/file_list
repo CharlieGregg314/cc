@@ -1,5 +1,5 @@
-version.lua
 code/main.lua
 code/updater/auto_update.lua
 code/updater/update.lua
 code/force_update.lua
+version.lua
